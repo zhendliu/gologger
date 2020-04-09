@@ -123,8 +123,6 @@ func (f *FileLogger) writeLogBackground() {
 		}
 		select {
 		case logTmp := <-f.logChan:
-			fmt.Println("取出日志")
-			fmt.Println(logTmp)
 			logInfo := fmt.Sprintf("[%s] [%s] [%s:%s:line:%d ]: %s \n", logTmp.timestamp, logTmp.level, logTmp.fileName, logTmp.funcName, logTmp.line, logTmp.msg)
 			fmt.Fprintf(f.fileHandle, logInfo)
 			if logTmp.level >= ERROR {
